@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sf-primary: #0D9DDA;
+    --sf-accent: #0D9DDA;
+    --sf-gradient-start: #2C119D;
+    --sf-gradient-end: #A07FE9;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-gray-50;
+    color: #032D60;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 text-white rounded-lg font-medium 
+           bg-gradient-to-r from-[--sf-gradient-start] to-[--sf-gradient-end]
+           hover:opacity-90 transition-all duration-200 
+           shadow-sm hover:shadow-md active:shadow-inner;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-[--sf-primary] border border-[--sf-primary] 
+           rounded-lg font-medium hover:bg-blue-50 transition-all duration-200
+           flex items-center justify-center;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200
+           border border-gray-100 p-6 sm:p-8;
+  }
+
+  .input-field {
+    @apply block w-full rounded-lg border-gray-200 shadow-sm
+           focus:border-[--sf-accent] focus:ring focus:ring-[--sf-accent] focus:ring-opacity-20 
+           transition-all duration-200;
+  }
+
+  .select-field {
+    @apply block w-full rounded-lg border-gray-200 shadow-sm
+           focus:border-[--sf-accent] focus:ring focus:ring-[--sf-accent] focus:ring-opacity-20
+           transition-all duration-200;
+  }
+
+  .icon-gradient {
+    @apply bg-gradient-to-r from-[--sf-gradient-start] to-[--sf-gradient-end];
+  }
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
+}
+
+/* Print styles */
+@media print {
+  @page {
+    margin: 2cm;
+  }
+  
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  .print\:hidden {
+    display: none !important;
+  }
+  
+  .print\:break-before-page {
+    break-before: page;
+  }
+  
+  .print\:shadow-none {
+    box-shadow: none !important;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
